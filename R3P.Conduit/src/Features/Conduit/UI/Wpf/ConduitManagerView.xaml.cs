@@ -6,7 +6,7 @@ using R3P.Hivemind.Core.Features.Conduit.Model;
 using R3P.Hivemind.Core.Features.Conduit.Services;
 using R3P.Hivemind.Features.Conduit.Services;
 
-namespace R3P.Hivemind.Features.Conduit.UI.Wpf
+namespace R3P.Hivemind.UI.Wpf
 {
     public partial class ConduitManagerView : UserControl
     {
