@@ -1,12 +1,107 @@
-﻿<Window x:Class="R3P.Hivemind.Desktop.MainWindow"
+<Window x:Class="R3P.Hivemind.Desktop.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:R3P.Hivemind.Desktop"
+        xmlns:core="clr-namespace:R3P.Hivemind.Core.Interop;assembly=R3P.Hivemind.Core"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
+        Title="Root3Power Hivemind Console"
+        Height="600"
+        Width="960"
+        FontFamily="Segoe UI"
+        Background="#FF1E1E1E"
+        Foreground="WhiteSmoke">
+    <Window.Resources>
+        <Style x:Key="StatusLabel" TargetType="TextBlock">
+            <Setter Property="Margin" Value="0,0,0,4" />
+            <Setter Property="FontSize" Value="13" />
+            <Setter Property="Opacity" Value="0.75" />
+        </Style>
+        <SolidColorBrush x:Key="SurfaceBrush" Color="#FF2C2C2C" />
+        <SolidColorBrush x:Key="BorderBrush" Color="#FF3C3C3C" />
+    </Window.Resources>
+    <Grid Margin="16">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
 
+        <Border Grid.Row="0"
+                Padding="16"
+                Background="{StaticResource SurfaceBrush}"
+                BorderBrush="{StaticResource BorderBrush}"
+                BorderThickness="1"
+                CornerRadius="8">
+            <StackPanel>
+                <TextBlock Text="AutoCAD Session" Style="{StaticResource StatusLabel}" />
+                <TextBlock Text="{Binding AutoCadStatus}" FontSize="15" FontWeight="SemiBold" />
+                <TextBlock Text="IPC Channel" Style="{StaticResource StatusLabel}" Margin="0,12,0,4" />
+                <TextBlock Text="{Binding IpcStatus}" FontSize="15" FontWeight="SemiBold" />
+                <TextBlock Text="{Binding HandshakeSummary}" FontSize="12" Opacity="0.8" Margin="0,8,0,0" />
+            </StackPanel>
+        </Border>
+
+        <Border Grid.Row="1"
+                Margin="0,16,0,16"
+                Padding="12"
+                Background="{StaticResource SurfaceBrush}"
+                BorderBrush="{StaticResource BorderBrush}"
+                BorderThickness="1"
+                CornerRadius="8">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+                <TextBlock Text="Diagnostics Console" FontSize="16" FontWeight="SemiBold" />
+                <ListView Grid.Row="1"
+                          Margin="0,8,0,0"
+                          ItemsSource="{Binding Diagnostics}">
+                    <ListView.Resources>
+                        <Style TargetType="ListViewItem">
+                            <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+                            <Setter Property="Padding" Value="6" />
+                        </Style>
+                    </ListView.Resources>
+                    <ListView.ItemTemplate>
+                        <DataTemplate DataType="{x:Type core:IpcNotification}">
+                            <Border Background="#FF353535" CornerRadius="4" Padding="8" BorderBrush="#FF464646" BorderThickness="1">
+                                <StackPanel>
+                                    <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                                        <TextBlock Text="{Binding Timestamp, StringFormat={}{0:HH:mm:ss}}"
+                                                   FontWeight="Bold"
+                                                   Margin="0,0,8,0" />
+                                        <TextBlock Text="{Binding Category}" FontStyle="Italic" Opacity="0.8" />
+                                    </StackPanel>
+                                    <TextBlock Text="{Binding Message}" TextWrapping="Wrap" Margin="0,4,0,0" />
+                                </StackPanel>
+                            </Border>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </Grid>
+        </Border>
+
+        <Border Grid.Row="2"
+                Padding="12"
+                Background="{StaticResource SurfaceBrush}"
+                BorderBrush="{StaticResource BorderBrush}"
+                BorderThickness="1"
+                CornerRadius="8">
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                <Button Content="Reconnect IPC"
+                        Padding="16,8"
+                        Margin="0,0,8,0"
+                        Click="ReconnectIpc_OnClick" />
+                <Button Content="Launch / Attach AutoCAD"
+                        Padding="16,8"
+                        Margin="0,0,8,0"
+                        Click="AttachAutoCad_OnClick" />
+                <Button Content="Run Conduit Refresh"
+                        Padding="16,8"
+                        Click="RunConduitRefresh_OnClick" />
+            </StackPanel>
+        </Border>
     </Grid>
 </Window>
