@@ -4,11 +4,11 @@ using System.IO;
 using System.Runtime.InteropServices;
 using System.Runtime.Versioning;
 using System.Windows;
-using R3P.Hivemind.Features.Conduit.Model;
+using R3P.Hivemind.Core.Features.Conduit.Model;
 
-namespace R3P.Hivemind.Features.Conduit.Services
+namespace R3P.Hivemind.Core.Features.Conduit.Services
 {
-    internal static class ExcelService
+    public static class ExcelService
     {
         public static void ExportCsv(List<ConduitItem> items, string fileName)
         {

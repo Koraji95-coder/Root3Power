@@ -2,12 +2,12 @@ using System.Collections.Generic;
 using Autodesk.AutoCAD.ApplicationServices;
 using Autodesk.AutoCAD.DatabaseServices;
 
-namespace R3P.Hivemind.Features.Conduit.Services
+namespace R3P.Hivemind.Core.Features.Conduit.Services
 {
     // Drawing creator scaffolding: clones a template DWG, fills title block attributes,
     // and inserts pre-defined template content (3-line, schematics, etc.).
     // Implementation TBD per your template standards.
-    internal static class TemplateService
+    public static class TemplateService
     {
         public class DrawingSpec
         {

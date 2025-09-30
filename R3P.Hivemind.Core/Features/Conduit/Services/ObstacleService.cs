@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using Autodesk.AutoCAD.DatabaseServices;
 
-namespace R3P.Hivemind.Features.Conduit.Services
+namespace R3P.Hivemind.Core.Features.Conduit.Services
 {
-    internal static class ObstacleService
+    public static class ObstacleService
     {
         public static List<Extents3d> GetObstacles(Database db, IEnumerable<string> layerNames)
         {

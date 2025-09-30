@@ -2,7 +2,8 @@ using System;
 using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Controls;
-using R3P.Hivemind.Features.Conduit.Model;
+using R3P.Hivemind.Core.Features.Conduit.Model;
+using R3P.Hivemind.Core.Features.Conduit.Services;
 using R3P.Hivemind.Services;
 
 namespace R3P.Hivemind.Features.Conduit.UI.Wpf

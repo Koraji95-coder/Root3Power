@@ -9,9 +9,11 @@ using Autodesk.AutoCAD.Runtime;
 using Autodesk.AutoCAD.Windows;
 using AcadApp = Autodesk.AutoCAD.ApplicationServices.Application;
 using Microsoft.Win32;
+using R3P.Hivemind.Core.Diagnostics;
+using R3P.Hivemind.Core.Features.Conduit.Model;
+using R3P.Hivemind.Core.Features.Conduit.Services;
 using R3P.Hivemind.Services;
 using R3P.Hivemind.UI.Wpf;
-using R3P.Hivemind.Core.Diagnostics;
 
 namespace R3P.Hivemind.Features.Conduit
 {
@@ -89,7 +91,7 @@ namespace R3P.Hivemind.Features.Conduit
             }
         }
 
-        internal static void UiPlaceTagForSelected(Model.ConduitItem selected)
+        internal static void UiPlaceTagForSelected(ConduitItem selected)
         {
             if (selected == null) return;
             var doc = AcadApp.DocumentManager.MdiActiveDocument; var ed = doc.Editor; var db = doc.Database;
@@ -112,7 +114,7 @@ namespace R3P.Hivemind.Features.Conduit
             }
         }
 
-        internal static void UiRemoveTag(Model.ConduitItem selected)
+        internal static void UiRemoveTag(ConduitItem selected)
         {
             if (selected == null) return;
             var doc = AcadApp.DocumentManager.MdiActiveDocument; var db = doc.Database;
@@ -189,10 +191,10 @@ namespace R3P.Hivemind.Features.Conduit
         }
 
         // ---- Query ----
-        public static List<Model.ConduitItem> GetAllItems()
+        public static List<ConduitItem> GetAllItems()
         {
-            var doc = AcadApp.DocumentManager.MdiActiveDocument; if (doc == null) return new List<Model.ConduitItem>();
-            var ed = doc.Editor; var db = doc.Database; var items = new List<Model.ConduitItem>();
+            var doc = AcadApp.DocumentManager.MdiActiveDocument; if (doc == null) return new List<ConduitItem>();
+            var ed = doc.Editor; var db = doc.Database; var items = new List<ConduitItem>();
             var filter = new SelectionFilter(new[] { new TypedValue((int)DxfCode.Start, "LINE,ARC,LWPOLYLINE,POLYLINE,SPLINE,ELLIPSE") });
             var psr = ed.SelectAll(filter); if (psr.Status != PromptStatus.OK) return items;
             using (var tr = db.TransactionManager.StartTransaction())
@@ -208,7 +210,7 @@ namespace R3P.Hivemind.Features.Conduit
                         var feet = Utils.ToFeet(adj);
                         var cfg = ConfigService.Get(db);
                         if (feet > cfg.FiberThresholdFt) hint = $"> {cfg.FiberThresholdFt:0} ft — fiber recommended";
-                        items.Add(new Model.ConduitItem { Id = ent.ObjectId, Handle = h, Tag = tag, Raw = raw, Adjusted = adj, FtIn = ftin, Hint = hint });
+                        items.Add(new ConduitItem { Id = ent.ObjectId, Handle = h, Tag = tag, Raw = raw, Adjusted = adj, FtIn = ftin, Hint = hint });
                     }
                 }
                 tr.Commit();

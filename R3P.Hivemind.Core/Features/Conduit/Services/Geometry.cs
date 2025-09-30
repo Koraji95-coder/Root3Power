@@ -1,9 +1,9 @@
 using System;
 using Autodesk.AutoCAD.Geometry;
 
-namespace R3P.Hivemind.Features.Conduit.Services
+namespace R3P.Hivemind.Core.Features.Conduit.Services
 {
-    internal static class Geometry
+    public static class Geometry
     {
         public static Extents3d Expand(Extents3d e, double d)
         {

@@ -5,9 +5,9 @@ using Autodesk.AutoCAD.ApplicationServices;
 using Autodesk.AutoCAD.DatabaseServices;
 using Autodesk.AutoCAD.Geometry;
 
-namespace R3P.Hivemind.Features.Conduit.Services
+namespace R3P.Hivemind.Core.Features.Conduit.Services
 {
-    internal static class RouteService
+    public static class RouteService
     {
         public static List<Point3d> BestOrthRoute(Point3d p1, Point3d p2)
         {

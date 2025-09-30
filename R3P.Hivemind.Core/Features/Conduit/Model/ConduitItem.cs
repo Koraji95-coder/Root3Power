@@ -1,7 +1,7 @@
 using System.Globalization;
 using Autodesk.AutoCAD.DatabaseServices;
 
-namespace R3P.Hivemind.Features.Conduit.Model
+namespace R3P.Hivemind.Core.Features.Conduit.Model
 {
     public class ConduitItem
     {

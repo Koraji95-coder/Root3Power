@@ -3,9 +3,9 @@ using Autodesk.AutoCAD.ApplicationServices;
 using AcadApp = Autodesk.AutoCAD.ApplicationServices.Application;
 using Autodesk.AutoCAD.DatabaseServices;
 
-namespace R3P.Hivemind.Features.Conduit.Services
+namespace R3P.Hivemind.Core.Features.Conduit.Services
 {
-    internal static class Utils
+    public static class Utils
     {
         public static double CurveLength(Curve c) => c.GetDistanceAtParameter(c.EndParam) - c.GetDistanceAtParameter(c.StartParam);
         public static double ApplyAllowance(double len, double allowPct, double roundInc)
