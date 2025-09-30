@@ -9,7 +9,7 @@ using Autodesk.AutoCAD.Runtime;
 using Autodesk.AutoCAD.Windows;
 using AcadApp = Autodesk.AutoCAD.ApplicationServices.Application;
 using Microsoft.Win32;
-using R3P.Hivemind.Services;
+using R3P.Hivemind.Features.Conduit.Services;
 using R3P.Hivemind.UI.Wpf;
 using R3P.Hivemind.Core.Diagnostics;
 
