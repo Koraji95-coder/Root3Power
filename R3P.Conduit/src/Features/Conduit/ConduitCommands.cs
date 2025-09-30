@@ -1,17 +1,4 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using Autodesk.AutoCAD.ApplicationServices;
-using Autodesk.AutoCAD.DatabaseServices;
-using Autodesk.AutoCAD.EditorInput;
-using Autodesk.AutoCAD.Geometry;
-using Autodesk.AutoCAD.Runtime;
-using Autodesk.AutoCAD.Windows;
 using AcadApp = Autodesk.AutoCAD.ApplicationServices.Application;
-using Microsoft.Win32;
-using R3P.Hivemind.Core.Features.Conduit.Services;
-using R3P.Hivemind.Features.Conduit.Services;
-using R3P.Hivemind.UI.Wpf;
 using R3P.Hivemind.Core.Diagnostics;
 using Model = R3P.Hivemind.Core.Features.Conduit.Model;
 
