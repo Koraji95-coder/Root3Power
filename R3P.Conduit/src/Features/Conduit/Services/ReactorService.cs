@@ -10,39 +10,53 @@ namespace R3P.Hivemind.Features.Conduit.Services
     internal static class ReactorService
     {
         private static bool _attached;
+        private static Document _attachedDocument;
 
-        public static void AttachToActive()
+        public static void AttachToActive(Document document = null)
         {
-            if (_attached) return;
+            if (_attached && _attachedDocument == document) return;
+
             var dm = AcadApp.DocumentManager;
-            if (dm.MdiActiveDocument != null)
+            var doc = document ?? dm.MdiActiveDocument;
+            if (doc != null)
             {
-                var db = dm.MdiActiveDocument.Database;
+                if (_attached && _attachedDocument == doc) return;
+
+                var db = doc.Database;
                 db.ObjectModified += Db_ObjectModified;
                 db.ObjectErased += Db_ObjectErased;
                 dm.DocumentActivated += Dm_DocumentActivated;
                 _attached = true;
+                _attachedDocument = doc;
             }
         }
 
-        public static void Detach()
+        public static void Detach(Document document = null)
         {
-            var dm = AcadApp.DocumentManager;
-            if (dm.MdiActiveDocument != null)
+            var doc = document ?? _attachedDocument;
+            if (doc != null)
             {
-                var db = dm.MdiActiveDocument.Database;
+                var db = doc.Database;
                 db.ObjectModified -= Db_ObjectModified;
                 db.ObjectErased -= Db_ObjectErased;
-                dm.DocumentActivated -= Dm_DocumentActivated;
             }
+            var dm = AcadApp.DocumentManager;
+            dm.DocumentActivated -= Dm_DocumentActivated;
             _attached = false;
+            if (doc == _attachedDocument)
+            {
+                _attachedDocument = null;
+            }
         }
 
         private static void Dm_DocumentActivated(object sender, DocumentCollectionEventArgs e)
         {
             // Reattach to new active doc DB
-            Detach();
-            AttachToActive();
+            if (_attachedDocument != null)
+            {
+                Detach(_attachedDocument);
+            }
+            AttachToActive(e.Document);
             R3P.UiRefreshList();
         }
 
