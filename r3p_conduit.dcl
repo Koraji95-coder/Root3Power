@@ -1,6 +1,6 @@
 // Root3Power Conduit Manager
 
-r3p_conduit : dialog {
+R3P.Hivemind : dialog {
   label = "Root3Power Conduit Manager";
   : row {
     : boxed_column {
@@ -31,4 +31,5 @@ r3p_conduit : dialog {
   }
   ok_cancel;
 }
+
 

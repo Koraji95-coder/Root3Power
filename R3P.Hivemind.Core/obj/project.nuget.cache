@@ -1,0 +1,12 @@
+{
+  "version": 2,
+  "dgSpecHash": "STT89J4pO4s=",
+  "success": true,
+  "projectFilePath": "C:\\Users\\DustinWard\\Desktop\\Automation\\Root3power\\R3P.Hivemind.Core\\R3P.Hivemind.Core.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\DustinWard\\.nuget\\packages\\microsoft.netcore.app.ref\\8.0.20\\microsoft.netcore.app.ref.8.0.20.nupkg.sha512",
+    "C:\\Users\\DustinWard\\.nuget\\packages\\microsoft.windowsdesktop.app.ref\\8.0.20\\microsoft.windowsdesktop.app.ref.8.0.20.nupkg.sha512",
+    "C:\\Users\\DustinWard\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\8.0.20\\microsoft.aspnetcore.app.ref.8.0.20.nupkg.sha512"
+  ],
+  "logs": []
+}

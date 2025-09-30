@@ -1,4 +1,4 @@
-// Global usings for R3P.Conduit (C# 10)
+// Global usings for R3P.Hivemind (C# 10)
 
 global using System;
 global using System.Collections.Generic;
@@ -16,7 +16,9 @@ global using Autodesk.AutoCAD.Geometry;
 global using Autodesk.AutoCAD.Runtime;
 global using Autodesk.AutoCAD.Windows;
 
-global using R3P.Conduit.Model;
-global using R3P.Conduit.Services;
-global using R3P.Conduit.UI.Wpf;
+global using R3P.Hivemind.Model;
+global using R3P.Hivemind.Services;
+global using R3P.Hivemind.UI.Wpf;
+
+
 

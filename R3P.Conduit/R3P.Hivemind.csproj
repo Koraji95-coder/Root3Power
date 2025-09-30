@@ -1,0 +1,51 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net8.0-windows7.0</TargetFramework>
+    <OutputType>Library</OutputType>
+    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+    <UseWPF>true</UseWPF>
+    <AssemblyName>R3P.Hivemind</AssemblyName>
+    <RootNamespace>R3P.Hivemind</RootNamespace>
+    <LangVersion>latest</LangVersion>
+  </PropertyGroup>
+
+  <!-- Set ACAD_DIR to your AutoCAD install folder if different -->
+  <PropertyGroup Condition="'$(ACAD_DIR)'==''">
+    <ACAD_DIR>C:\Program Files\Autodesk\AutoCAD 2026</ACAD_DIR>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Reference Include="acmgd">
+      <HintPath>$(ACAD_DIR)\acmgd.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="acdbmgd">
+      <HintPath>$(ACAD_DIR)\acdbmgd.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="accoremgd">
+      <HintPath>$(ACAD_DIR)\accoremgd.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Remove="Microsoft.VisualBasic" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.VisualBasic" Version="10.3.0" />
+    <PackageReference Include="System.Drawing.Common" Version="8.0.6" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Assets\Root3powerLogo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\R3P.Hivemind.Core\R3P.Hivemind.Core.csproj" />
+  </ItemGroup>
+
+</Project>
+
+
+

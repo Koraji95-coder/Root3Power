@@ -1,0 +1,1 @@
+c:\Users\DustinWard\Desktop\Automation\Root3power\R3P.Conduit\obj\Debug\net48\R3P.Conduit.csproj.AssemblyReference.cache

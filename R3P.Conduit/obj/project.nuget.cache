@@ -1,11 +1,15 @@
 {
   "version": 2,
-  "dgSpecHash": "vs/tNjlgSGg=",
+  "dgSpecHash": "4GiB43zygQ8=",
   "success": true,
-  "projectFilePath": "C:\\Users\\DustinWard\\Desktop\\Automation\\Root3power\\R3P.Conduit\\R3P.Conduit.csproj",
+  "projectFilePath": "C:\\Users\\DustinWard\\Desktop\\Automation\\Root3power\\R3P.Conduit\\R3P.Hivemind.csproj",
   "expectedPackageFiles": [
-    "C:\\Users\\DustinWard\\.nuget\\packages\\microsoft.netframework.referenceassemblies\\1.0.3\\microsoft.netframework.referenceassemblies.1.0.3.nupkg.sha512",
-    "C:\\Users\\DustinWard\\.nuget\\packages\\microsoft.netframework.referenceassemblies.net48\\1.0.3\\microsoft.netframework.referenceassemblies.net48.1.0.3.nupkg.sha512"
+    "C:\\Users\\DustinWard\\.nuget\\packages\\microsoft.visualbasic\\10.3.0\\microsoft.visualbasic.10.3.0.nupkg.sha512",
+    "C:\\Users\\DustinWard\\.nuget\\packages\\microsoft.win32.systemevents\\8.0.0\\microsoft.win32.systemevents.8.0.0.nupkg.sha512",
+    "C:\\Users\\DustinWard\\.nuget\\packages\\system.drawing.common\\8.0.6\\system.drawing.common.8.0.6.nupkg.sha512",
+    "C:\\Users\\DustinWard\\.nuget\\packages\\microsoft.netcore.app.ref\\8.0.20\\microsoft.netcore.app.ref.8.0.20.nupkg.sha512",
+    "C:\\Users\\DustinWard\\.nuget\\packages\\microsoft.windowsdesktop.app.ref\\8.0.20\\microsoft.windowsdesktop.app.ref.8.0.20.nupkg.sha512",
+    "C:\\Users\\DustinWard\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\8.0.20\\microsoft.aspnetcore.app.ref.8.0.20.nupkg.sha512"
   ],
   "logs": []
 }
