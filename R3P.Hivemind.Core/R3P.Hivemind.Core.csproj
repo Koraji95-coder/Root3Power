@@ -4,7 +4,33 @@
     <TargetFramework>net8.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
+    <RootNamespace>R3P.Hivemind.Core</RootNamespace>
   </PropertyGroup>
+
+  <PropertyGroup Condition="'$(ACAD_DIR)'==''">
+    <ACAD_DIR>C:\Program Files\Autodesk\AutoCAD 2026</ACAD_DIR>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Reference Include="acmgd">
+      <HintPath>$(ACAD_DIR)\acmgd.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="acdbmgd">
+      <HintPath>$(ACAD_DIR)\acdbmgd.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="accoremgd">
+      <HintPath>$(ACAD_DIR)\accoremgd.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="Features\Conduit\**\*.cs">
+      <Visible>true</Visible>
+    </Compile>
+  </ItemGroup>
 
 </Project>
 

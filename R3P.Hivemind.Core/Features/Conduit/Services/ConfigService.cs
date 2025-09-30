@@ -1,9 +1,9 @@
 using System;
 using Autodesk.AutoCAD.DatabaseServices;
 
-namespace R3P.Hivemind.Features.Conduit.Services
+namespace R3P.Hivemind.Core.Features.Conduit.Services
 {
-    internal static class ConfigService
+    public static class ConfigService
     {
         public class Config {
             public string Prefix = "P-";

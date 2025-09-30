@@ -16,7 +16,8 @@ global using Autodesk.AutoCAD.Geometry;
 global using Autodesk.AutoCAD.Runtime;
 global using Autodesk.AutoCAD.Windows;
 
-global using R3P.Hivemind.Features.Conduit.Model;
+global using R3P.Hivemind.Core.Features.Conduit.Model;
+global using R3P.Hivemind.Core.Features.Conduit.Services;
 global using R3P.Hivemind.Features.Conduit.Services;
 global using R3P.Hivemind.UI.Wpf;
 

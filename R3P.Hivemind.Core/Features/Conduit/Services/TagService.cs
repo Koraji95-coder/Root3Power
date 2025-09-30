@@ -1,8 +1,8 @@
 using Autodesk.AutoCAD.DatabaseServices;
 
-namespace R3P.Hivemind.Features.Conduit.Services
+namespace R3P.Hivemind.Core.Features.Conduit.Services
 {
-    internal static class TagService
+    public static class TagService
     {
         public static string NextTag(Database db, Transaction tr, ConfigService.Config cfg)
         {
