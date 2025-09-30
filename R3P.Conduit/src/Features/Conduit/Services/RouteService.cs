@@ -56,9 +56,6 @@ namespace R3P.Hivemind.Features.Conduit.Services
             sx = Math.Max(0, Math.Min(nx - 1, sx)); sy = Math.Max(0, Math.Min(ny - 1, sy));
             tx = Math.Max(0, Math.Min(nx - 1, tx)); ty = Math.Max(0, Math.Min(ny - 1, ty));
 
-            var open = new SortedSet<(double f, int n)>(Comparer<(double f, int n)>.Create((a, b) => a.f == b.f ? a.n.CompareTo(b.n) : a.f.CompareTo(b.f)));
-            var came = new Dictionary<int, int>();
-            var g = new Dictionary<int, double>();
             Func<int, int, int> key = (ix, iy) => iy * nx + ix;
             int sKey = key(sx, sy), tKey = key(tx, ty);
             Func<int, double> h = (n) =>
@@ -68,7 +65,9 @@ namespace R3P.Hivemind.Features.Conduit.Services
                 return Math.Abs(p.X - p2.X) + Math.Abs(p.Y - p2.Y);
             };
 
-            g[sKey] = 0.0; open.Add((f: h(sKey), n: sKey));
+            var open = new SortedSet<(double f, int n)>(Comparer<(double f, int n)>.Create((a, b) => a.f == b.f ? a.n.CompareTo(b.n) : a.f.CompareTo(b.f))) { (f: h(sKey), n: sKey) };
+            var came = new Dictionary<int, int>();
+            var g = new Dictionary<int, double> { [sKey] = 0.0 };
             int[] dx4 = { 1, -1, 0, 0 };
             int[] dy4 = { 0, 0, 1, -1 };
             int[] dx8 = { 1, 1, 1, -1, -1, -1, 0, 0 };
@@ -103,8 +102,8 @@ namespace R3P.Hivemind.Features.Conduit.Services
                 return BestOrthRoute(p1, p2);
 
             // Reconstruct path
-            var path = new List<Point2d>(); int curKey = tKey;
-            path.Add(toPt(curKey % nx, curKey / nx));
+            int curKey = tKey;
+            var path = new List<Point2d> { toPt(curKey % nx, curKey / nx) };
             while (curKey != sKey)
             {
                 curKey = came[curKey];
