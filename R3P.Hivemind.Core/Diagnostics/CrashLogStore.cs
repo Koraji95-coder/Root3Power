@@ -46,7 +46,7 @@ namespace R3P.Hivemind.Core.Diagnostics
             }
             var handler = LineAppended;
             handler?.Invoke(null, message);
+        }
     }
 }
-
 
