@@ -1,6 +1,3 @@
-using System;
-using Autodesk.AutoCAD.Geometry;
-
 namespace R3P.Hivemind.Features.Conduit.Services
 {
     internal static class Geometry

@@ -1,11 +1,3 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using Autodesk.AutoCAD.ApplicationServices;
-using Autodesk.AutoCAD.DatabaseServices;
-using Autodesk.AutoCAD.Geometry;
-using R3P.Hivemind.Core.Features.Conduit.Services;
-
 namespace R3P.Hivemind.Features.Conduit.Services
 {
     internal static class RouteService

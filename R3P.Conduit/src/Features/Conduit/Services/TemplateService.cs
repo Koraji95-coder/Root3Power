@@ -1,7 +1,3 @@
-using System.Collections.Generic;
-using Autodesk.AutoCAD.ApplicationServices;
-using Autodesk.AutoCAD.DatabaseServices;
-
 namespace R3P.Hivemind.Features.Conduit.Services
 {
     // Drawing creator scaffolding: clones a template DWG, fills title block attributes,
