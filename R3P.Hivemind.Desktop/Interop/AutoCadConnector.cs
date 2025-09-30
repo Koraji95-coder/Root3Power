@@ -1,4 +1,6 @@
+using System;
 using System.Runtime.InteropServices;
+using System.Runtime.Versioning;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -54,7 +56,7 @@ public sealed class AutoCadConnector
                 return missing;
             }
 
-            if (preferExisting)
+            if (preferExisting && OperatingSystem.IsWindows())
             {
                 var existing = TryGetRunningInstance();
                 if (existing is not null)
@@ -123,17 +125,36 @@ public sealed class AutoCadConnector
         }
     }
 
+    [SupportedOSPlatform("windows")]
     private object? TryGetRunningInstance()
     {
         try
         {
-            return Marshal.GetActiveObject(_progId);
+            var hresult = CLSIDFromProgID(_progId, out var clsid);
+            if (hresult != 0)
+            {
+                if (hresult < 0)
+                {
+                    Marshal.ThrowExceptionForHR(hresult);
+                }
+
+                return null;
+            }
+
+            GetActiveObject(ref clsid, IntPtr.Zero, out var automationObject);
+            return automationObject;
         }
         catch (COMException)
         {
             return null;
         }
     }
+
+    [DllImport("ole32.dll", CharSet = CharSet.Unicode, ExactSpelling = true)]
+    private static extern int CLSIDFromProgID(string lpszProgID, out Guid lpclsid);
+
+    [DllImport("oleaut32.dll", PreserveSig = false)]
+    private static extern void GetActiveObject(ref Guid rclsid, IntPtr pReserved, [MarshalAs(UnmanagedType.IUnknown)] out object ppunk);
 
     private async Task WaitForApplicationReadyAsync(object automationObject, CancellationToken cancellationToken)
     {
