@@ -1,9 +1,9 @@
 using System;
 using Autodesk.AutoCAD.DatabaseServices;
 
-namespace R3P.Hivemind.Features.Conduit.Services
+namespace R3P.Hivemind.Core.Features.Conduit.Services
 {
-    internal static class DataService
+    public static class DataService
     {
         private const string ExtKey = "R3P_CONDUIT";
 

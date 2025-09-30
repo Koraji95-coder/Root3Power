@@ -9,6 +9,7 @@ using Autodesk.AutoCAD.Runtime;
 using Autodesk.AutoCAD.Windows;
 using AcadApp = Autodesk.AutoCAD.ApplicationServices.Application;
 using Microsoft.Win32;
+using R3P.Hivemind.Core.Features.Conduit.Services;
 using R3P.Hivemind.Features.Conduit.Services;
 using R3P.Hivemind.UI.Wpf;
 using R3P.Hivemind.Core.Diagnostics;
@@ -153,8 +154,8 @@ namespace R3P.Hivemind.Features.Conduit
                 {
                     if (so == null) continue;
                     var ent = tr.GetObject(so.ObjectId, OpenMode.ForRead) as Entity; if (!(ent is Curve curve)) continue;
-                    double raw = Utils.CurveLength(curve);
-                    double adj = Utils.ApplyAllowance(raw, cfg.AllowPercent, cfg.RoundInc);
+                    double raw = MeasurementService.CurveLength(curve);
+                    double adj = MeasurementService.ApplyAllowance(raw, cfg.AllowPercent, cfg.RoundInc);
                     string tag = TagService.NextTag(db, tr, cfg);
                     DataService.WriteTagXRecord(ent, tr, tag, raw, adj, cfg.AllowPercent, cfg.RoundInc);
                     count++;
@@ -179,8 +180,8 @@ namespace R3P.Hivemind.Features.Conduit
                 for (int i = 0; i < pts.Count; i++) pl.AddVertexAt(i, new Point2d(pts[i].X, pts[i].Y), 0, 0, 0);
                 var btr = (BlockTableRecord)tr.GetObject(db.CurrentSpaceId, OpenMode.ForWrite);
                 btr.AppendEntity(pl); tr.AddNewlyCreatedDBObject(pl, true);
-                double raw = Utils.CurveLength(pl);
-                double adj = Utils.ApplyAllowance(raw, cfg.AllowPercent, cfg.RoundInc);
+                double raw = MeasurementService.CurveLength(pl);
+                double adj = MeasurementService.ApplyAllowance(raw, cfg.AllowPercent, cfg.RoundInc);
                 string tag = TagService.NextTag(db, tr, cfg);
                 DataService.WriteTagXRecord(pl, tr, tag, raw, adj, cfg.AllowPercent, cfg.RoundInc);
                 tr.Commit(); ed.WriteMessage($"\nRouted + tagged: {tag}\n");
@@ -203,9 +204,9 @@ namespace R3P.Hivemind.Features.Conduit
                     if (DataService.ReadTagXRecord(ent, tr, out string tag, out double raw, out double adj, out double allow, out double round))
                     {
                         var h = ent.Handle.ToString();
-                        var ftin = Utils.FormatFtIn(adj);
+                        var ftin = MeasurementService.FormatFtIn(adj);
                         string hint = null;
-                        var feet = Utils.ToFeet(adj);
+                        var feet = MeasurementService.ToFeet(adj);
                         var cfg = ConfigService.Get(db);
                         if (feet > cfg.FiberThresholdFt) hint = $"> {cfg.FiberThresholdFt:0} ft — fiber recommended";
                         items.Add(new Model.ConduitItem { Id = ent.ObjectId, Handle = h, Tag = tag, Raw = raw, Adjusted = adj, FtIn = ftin, Hint = hint });

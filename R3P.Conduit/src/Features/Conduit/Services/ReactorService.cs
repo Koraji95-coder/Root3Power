@@ -2,6 +2,7 @@ using System;
 using Autodesk.AutoCAD.ApplicationServices;
 using AcadApp = Autodesk.AutoCAD.ApplicationServices.Application;
 using Autodesk.AutoCAD.DatabaseServices;
+using R3P.Hivemind.Core.Features.Conduit.Services;
 using Autodesk.AutoCAD.EditorInput;
 
 namespace R3P.Hivemind.Features.Conduit.Services
@@ -64,8 +65,8 @@ namespace R3P.Hivemind.Features.Conduit.Services
                         return;
 
                     if (!(ent is Curve curve)) return;
-                    double newRaw = Utils.CurveLength(curve);
-                    double newAdj = Utils.ApplyAllowance(newRaw, allow, round);
+                    double newRaw = MeasurementService.CurveLength(curve);
+                    double newAdj = MeasurementService.ApplyAllowance(newRaw, allow, round);
 
                     if (Math.Abs(newAdj - adj) > 1e-6)
                     {
