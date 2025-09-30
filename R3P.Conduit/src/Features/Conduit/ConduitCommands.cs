@@ -13,6 +13,7 @@ using R3P.Hivemind.Core.Features.Conduit.Services;
 using R3P.Hivemind.Features.Conduit.Services;
 using R3P.Hivemind.UI.Wpf;
 using R3P.Hivemind.Core.Diagnostics;
+using Model = R3P.Hivemind.Core.Features.Conduit.Model;
 
 namespace R3P.Hivemind.Features.Conduit
 {
