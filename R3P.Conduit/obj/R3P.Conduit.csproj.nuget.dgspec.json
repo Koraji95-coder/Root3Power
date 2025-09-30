@@ -1,0 +1,59 @@
+{
+  "format": 1,
+  "restore": {
+    "C:\\Users\\DustinWard\\Desktop\\Automation\\Root3power\\R3P.Conduit\\R3P.Conduit.csproj": {}
+  },
+  "projects": {
+    "C:\\Users\\DustinWard\\Desktop\\Automation\\Root3power\\R3P.Conduit\\R3P.Conduit.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\DustinWard\\Desktop\\Automation\\Root3power\\R3P.Conduit\\R3P.Conduit.csproj",
+        "projectName": "R3P.Conduit",
+        "projectPath": "C:\\Users\\DustinWard\\Desktop\\Automation\\Root3power\\R3P.Conduit\\R3P.Conduit.csproj",
+        "packagesPath": "C:\\Users\\DustinWard\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\DustinWard\\Desktop\\Automation\\Root3power\\R3P.Conduit\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\DustinWard\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net48"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net48": {
+            "targetAlias": "net48",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        },
+        "SdkAnalysisLevel": "9.0.300"
+      },
+      "frameworks": {
+        "net48": {
+          "targetAlias": "net48",
+          "dependencies": {
+            "Microsoft.NETFramework.ReferenceAssemblies": {
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[1.0.3, )",
+              "autoReferenced": true
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.305\\RuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}
